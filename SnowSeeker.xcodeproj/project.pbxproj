@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		3D4955682FE52C5D00152967 /* SnowSeeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowSeeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D4955682FE52C5D00152967 /* SnowSeeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SnowSeeker.app; path = "/Users/sovanmakara/development/100day swiftUI/Day 97/SnowSeeker/build/Debug-iphoneos/SnowSeeker.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,16 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				3D49556A2FE52C5D00152967 /* SnowSeeker */,
-				3D4955692FE52C5D00152967 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		3D4955692FE52C5D00152967 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3D4955682FE52C5D00152967 /* SnowSeeker.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,7 +86,7 @@
 			mainGroup = 3D49555F2FE52C5D00152967;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 3D4955692FE52C5D00152967 /* Products */;
+			productRefGroup = 3D49555F2FE52C5D00152967;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
