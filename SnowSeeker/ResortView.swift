@@ -25,10 +25,15 @@ struct ResortView: View {
                     Image(decorative: resort.id)
                         .resizable()
                         .scaledToFit()
+                    
                     Text(resort.imageCredit)
+                        .font(.caption2)
                         .foregroundStyle(.white)
-                        .padding(6)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
                         .background(.black.opacity(0.5))
+                        .clipShape(.rect(cornerRadius: 4))
+                        .padding(8)
                 }
                 
                 HStack {
@@ -41,7 +46,7 @@ struct ResortView: View {
                     }
                 }
                 .padding(.vertical)
-                .background(.primary.opacity(0.1))
+                .background(.regularMaterial)
                 .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                 
                 Group {
@@ -51,14 +56,26 @@ struct ResortView: View {
                     Text("Facilities")
                         .font(.headline)
                     
-                    HStack {
-                        ForEach(resort.facilityType) { facility in
-                            Button {
-                                selectedFacility = facility
-                                showingFacility = true
-                            }label:{
-                                facility.icon
-                                    .font(.title)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) {
+                            ForEach(resort.facilityType) { facility in
+                                Button {
+                                    selectedFacility = facility
+                                    showingFacility = true
+                                } label: {
+                                    VStack(spacing: 8) {
+                                        facility.icon
+                                            .font(.title)
+
+                                        Text(facility.name)
+                                            .font(.caption)
+                                    }
+                                    .frame(width: 90, height: 90)
+                                    .background(.ultraThinMaterial)
+                                    .clipShape(
+                                        RoundedRectangle(cornerRadius: 20)
+                                    )
+                                }
                             }
                         }
                     }
@@ -66,15 +83,26 @@ struct ResortView: View {
                 }
                 .padding(.horizontal)
                 
-                Button(favorites.contains(resort) ? "Remove from Favorites" : "Add to Favorites"){
+                Button {
                     if favorites.contains(resort) {
                         favorites.remove(resort)
                     } else {
                         favorites.add(resort)
                     }
+                } label: {
+                    Label(
+                        favorites.contains(resort)
+                            ? "Remove Favorite"
+                            : "Add to Favorites",
+                        systemImage: favorites.contains(resort)
+                            ? "heart.fill"
+                            : "heart"
+                    )
+                    .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
-                .padding()
+                .controlSize(.large)
+                .padding(.horizontal)
             }
         }
         .navigationTitle("\(resort.name), \(resort.country)")

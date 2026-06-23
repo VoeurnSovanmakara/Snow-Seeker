@@ -12,19 +12,26 @@ struct SkiDetailsView: View {
     
     var body: some View {
         Group {
-            VStack {
-                Text("Elevation")
-                    .font(.caption.bold())
-                Text("\(resort.elevation)m")
-                    .font(.title3)
-            }
-            
-            VStack {
-                Text("Snow")
-                    .font(.caption.bold())
-                Text("\(resort.snowDepth)cm")
-                    .font(.title3)
-            }
+            StatView(label: "Elevation", value: "\(resort.elevation)m")
+            StatView(label: "Snow", value: "\(resort.snowDepth)cm")
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+struct StatView: View {
+    let label: String
+    let value: String
+    
+    var body: some View {
+        VStack(spacing: 4) {
+            Text(label)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .textCase(.uppercase)
+                .tracking(0.5)
+            Text(value)
+                .font(.title3.bold())
         }
         .frame(maxWidth: .infinity)
     }

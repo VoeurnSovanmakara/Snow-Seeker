@@ -40,25 +40,21 @@ struct ContentView: View {
     
     var body: some View {
         NavigationSplitView {
-            List(filteredResorts ) { resort in
+            List(filteredResorts) { resort in
                 NavigationLink(value: resort) {
-                    HStack {
+                    HStack(spacing: 12) {
                         Image(resort.country)
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 40, height: 25)
-                            .clipShape(
-                                .rect(cornerRadius: 5)
-                            )
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(.black, lineWidth: 1)
-                            )
+                            .frame(width: 50, height: 32)
+                            .clipShape(.rect(cornerRadius: 6))
+                            .shadow(radius: 2)
                         
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 2) {
                             Text(resort.name)
                                 .font(.headline)
-                            Text("\(resort.runs) runs")
+                            Text("\(resort.runs) runs • \(resort.country)")
+                                .font(.subheadline)
                                 .foregroundStyle(.secondary)
                         }
                         
@@ -67,8 +63,10 @@ struct ContentView: View {
                             Image(systemName: "heart.fill")
                                 .accessibilityLabel("This is a favorite resort")
                                 .foregroundStyle(.red)
+                                .imageScale(.small)
                         }
                     }
+                    .padding(.vertical, 4)
                 }
             }
             .navigationTitle("Resorts")
@@ -84,7 +82,7 @@ struct ContentView: View {
                         }
                     }
                 } label: {
-                    Label("Sort", systemImage: "arrow.up.arrow.down")
+                    Label("Sort", systemImage: "line.3.horizontal.decrease")
                 }
             }
         } detail: {
